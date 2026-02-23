@@ -18,7 +18,7 @@ local keys = {
    -- misc/useful --
    { key = 'F1', mods = 'NONE', action = 'ActivateCopyMode' },
    { key = 'F2', mods = 'NONE', action = act.ActivateCommandPalette },
-   { key = 'F3', mods = 'NONE', action = act.ShowLauncher },
+   { key = 'p', mods = mod.SUPER, action = act.ShowLauncher },
    { key = 'F4', mods = 'NONE', action = act.ShowLauncherArgs({ flags = 'FUZZY|TABS' }) },
    {
       key = 'F5',
@@ -246,6 +246,11 @@ local mouse_bindings = {
       action = act.OpenLinkAtMouseCursor,
    },
 }
+
+if platform.is_mac  then 
+    table.insert(keys, { key = 'c',  mods = mod.SUPER,  action = act.CopyTo('Clipboard') })
+    table.insert(keys, { key = 'v',  mods = mod.SUPER,  action = act.PasteFrom('Clipboard') })
+end
 
 return {
    disable_default_key_bindings = true,
